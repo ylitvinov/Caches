@@ -1,7 +1,7 @@
 package cache;
 
 /**
- * This factory might help to avoid creating many instances in multi-threading environment.
+ * This factory should help to avoid creating many values for the same key in multi-threading environment.
  *
  * @author Yury Litvinov
  */
