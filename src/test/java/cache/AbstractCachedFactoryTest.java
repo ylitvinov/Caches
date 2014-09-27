@@ -5,13 +5,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * @author Yury Litvinov
  */
 public class AbstractCachedFactoryTest {
-    private AbstractCachedFactory<String, String> factory;
+    private CachedFactoryMock factory;
 
     @Before
     public void before() throws Exception {
@@ -28,8 +29,11 @@ public class AbstractCachedFactoryTest {
         String b2 = factory.getValue("b");
         Assert.assertTrue(b1 == b2);
 
+        //a1 should be evicted from the cache already
         String a3 = factory.getValue("a");
         Assert.assertTrue(a3 != a1);
+
+        Assert.assertEquals(Arrays.asList("a", "b", "a"), factory.invocations);
     }
 
     class CachedFactoryMock extends AbstractCachedFactory<String, String> {
