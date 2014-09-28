@@ -15,7 +15,7 @@ public abstract class AbstractCachedFactory<K, V> {
     public V getValue(K key) {
         V value = cache.get(key);
         if (value == null) {
-            synchronized (this) {
+            synchronized (cache) {
                 value = cache.get(key);
                 if (value == null) {
                     value = createValue(key);
