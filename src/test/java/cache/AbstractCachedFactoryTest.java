@@ -20,7 +20,7 @@ public class AbstractCachedFactoryTest {
     }
 
     @Test
-    public void testName() throws Exception {
+    public void test() throws Exception {
         String a1 = factory.getValue("a");
         String a2 = factory.getValue("a");
         Assert.assertTrue(a1 == a2);
